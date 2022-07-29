@@ -1,0 +1,34 @@
+{
+	"name": "Click Sound",
+	"description": "A chrome extension that plays a sound when interacting with the browser. By clicking with the mouse, pressing a key on the keyboard and when opening, closing and switching tabs.",
+	"version": "0.0.1",
+	"manifest_version": 3,
+	"background": {
+    "service_worker": "background.js"
+	},
+	"content_scripts": [
+		{
+			"matches": [ "<all_urls>" ],
+			"js": [ "content.js" ]
+		}
+	],
+	"web_accessible_resources": [
+		{
+      "resources": [
+				"sounds/mouse/down.mp3",
+				"sounds/mouse/up.mp3",
+				"sounds/mouse/click.mp3",
+				"sounds/mouse/scroll.mp3",
+
+				"sounds/keyboard/1.mp3",
+				"sounds/keyboard/2.mp3",
+				"sounds/keyboard/3.mp3",
+				"sounds/keyboard/4.mp3",
+				"sounds/keyboard/5.mp3",
+				"sounds/keyboard/6.mp3"
+			],
+      "matches": [ "<all_urls>" ]
+    }
+	],
+  "permissions": [ "tabs" ]
+}
