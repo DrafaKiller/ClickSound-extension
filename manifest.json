@@ -4,7 +4,7 @@
 	"version": "0.0.1",
 	"manifest_version": 3,
 	"background": {
-    "service_worker": "background.js"
+		"service_worker": "background.js"
 	},
 	"content_scripts": [
 		{
@@ -14,7 +14,7 @@
 	],
 	"web_accessible_resources": [
 		{
-      "resources": [
+			"resources": [
 				"sounds/mouse/down.mp3",
 				"sounds/mouse/up.mp3",
 				"sounds/mouse/click.mp3",
@@ -27,8 +27,8 @@
 				"sounds/keyboard/5.mp3",
 				"sounds/keyboard/6.mp3"
 			],
-      "matches": [ "<all_urls>" ]
-    }
+			"matches": [ "<all_urls>" ]
+		}
 	],
-  "permissions": [ "tabs" ]
+	"permissions": [ "tabs" ]
 }
