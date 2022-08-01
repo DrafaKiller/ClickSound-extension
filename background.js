@@ -1,4 +1,9 @@
+let lastClickSound = 0;
+
 async function notifyTabEvent(action) {
+	if (lastClickSound + 50 > Date.now()) return;
+	lastClickSound = Date.now();
+	
 	let tabs = await chrome.tabs.query({});
 	tabs = tabs.sort((a, b) => a.active ? -1 : 1);
 	
@@ -12,14 +17,8 @@ async function notifyTabEvent(action) {
 	}
 }
 
-let lastClickSound = 0;
-
-chrome.tabs.onCreated.addListener((tabId, changeInfo, tab) => {
-	if (lastClickSound + 250 > Date.now()) return;
-	notifyTabEvent('open');
-});
-
-chrome.tabs.onRemoved.addListener((tabId, changeInfo, tab) => notifyTabEvent('close'));
+chrome.tabs.onCreated.addListener(() => notifyTabEvent('open'));
+chrome.tabs.onRemoved.addListener(() => notifyTabEvent('close'));
 chrome.tabs.onActivated.addListener(() => notifyTabEvent('changed'));
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
